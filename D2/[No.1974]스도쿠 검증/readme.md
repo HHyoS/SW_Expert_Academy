@@ -9,12 +9,13 @@
     스도쿠는 숫자퍼즐로, 가로 9칸 세로 9칸으로 이루어져 있는 표에 1 부터 9 까지의 숫자를 채워넣는 퍼즐이다.
 
 
-        ![캡처](https://user-images.githubusercontent.com/57944215/177785133-592edd86-273b-4120-9394-665dac4f6bea.png)
+![캡처](https://user-images.githubusercontent.com/57944215/177785133-592edd86-273b-4120-9394-665dac4f6bea.png)
 
 
     같은 줄에 1 에서 9 까지의 숫자를 한번씩만 넣고, 3 x 3 크기의 작은 격자 또한, 1 에서 9 까지의 숫자가 겹치지 않아야 한다.
 
-        ![캡처2](https://user-images.githubusercontent.com/57944215/177785140-909f82b0-8372-4cb3-93d0-f5ce221bc98e.png)
+ 
+![캡처2](https://user-images.githubusercontent.com/57944215/177785140-909f82b0-8372-4cb3-93d0-f5ce221bc98e.png)
 
     입력으로 9 X 9 크기의 스도쿠 퍼즐의 숫자들이 주어졌을 때, 위와 같이 겹치는 숫자가 없을 경우, 1을 정답으로 출력하고 그렇지 않을 경우 0 을 출력한다.
 
