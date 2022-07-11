@@ -1,7 +1,7 @@
 package org.opentutorials.java_start.eclipse;
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -11,8 +11,8 @@ public class Solution {
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		BufferedReader br = new BufferedReader(new FileReader("D:\\input.txt"));
-		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		//BufferedReader br = new BufferedReader(new FileReader("D:\\input.txt"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		int T = Integer.parseInt(br.readLine());
 		ArrayList<Integer>[] child = new ArrayList[10001];
@@ -24,7 +24,7 @@ public class Solution {
 			int V = Integer.parseInt(st.nextToken()), E = Integer.parseInt(st.nextToken());
 			int n1 = Integer.parseInt(st.nextToken()),n2 =Integer.parseInt(st.nextToken());
 			parent = new int[V+1];
-			boolean[] check = new boolean[V+1];
+			
 			parent[1] = 0;
 			for(int j = 1; j <= V; ++j) {
 				child[j] = new ArrayList<Integer>();
@@ -54,31 +54,51 @@ public class Solution {
 			}
 			
 			//System.out.println(a1.size()+" " +a2.size());
-			int size1 = a1.size()-1;
-			int size2 = a2.size()-1;
-			while((size1 >=0 && size2 >=0)&&(a1.get(size1) == a2.get(size2))) {
-				--size1;
-				--size2;
+			int target = 0;
+			
+			//이 부분 수정 후 문제해결
+			// 두 노드 중 더 깊은 노드를 찾아 그 노드의 
+			if(a1.size() > a2.size()) {
+				for(int a = a2.size()-1; a >= 0; --a) {
+					if(a1.contains(a2.get(a))){
+						target = a2.get(a);
+						continue;
+					}
+					else {
+						break;
+					}
+						
+				}
 			}
-			int target = a1.get(++size1);
+			else {
+				for(int a = a1.size()-1; a >= 0; --a) {
+					if(a2.contains(a1.get(a))){
+						target = a1.get(a);
+						continue;
+					}
+					else {
+						break;
+					}
+						
+				}
+			}
 			
 			Queue<Integer> que = new LinkedList<Integer>();
 			que.offer(target);
 			int answer = 1;
+			
 			while(!que.isEmpty()) {
 				int size = que.size();
 				for(int a = 0; a < size; ++a) {
 					int num = que.poll();
 					for(int b : child[num]) {
-						if(!check[b]) {
-							check[b] = true;
 							que.offer(b);
 							++answer;
 						}
 					}
 				}
 			}
-			System.out.println(target+" " +answer);
+			System.out.println("#"+(i+1)+" "+target+" " +answer);
 		}
 	}
 }
